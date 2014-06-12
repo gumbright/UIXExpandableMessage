@@ -12,6 +12,7 @@
 
 static CGFloat kCompactWidth = 300.0;
 static UIView* gMessageView;
+static UIXExpandableMessageController* sController;
 
 @class UIXExpandableMessageView;
 
@@ -40,6 +41,8 @@ static UIView* gMessageView;
 @property (nonatomic, strong) IBOutlet UIView* contentView;
 @property (nonatomic, strong) IBOutlet UIView* detailContent;
 @property (nonatomic, assign) NSObject<UIXExpandableMessageViewDelegate>* delegate;
+
+@property (nonatomic, strong) UIXExpandableMessageController* controller;
 @end
 
 @implementation UIXExpandableMessageView
@@ -71,6 +74,14 @@ static UIView* gMessageView;
 - (void) awakeFromNib
 {
     [self commonInit];
+}
+
+/////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////
+- (void) dealloc
+{
+    NSLog(@"view dealloc");
 }
 
 /////////////////////////////////////////////////////
@@ -208,9 +219,9 @@ static UIView* gMessageView;
         self.messageShort = message;
         self.messageDetail = detail;
         self.messageTitle = title;
+        sController = self;
     }
     return self;
-    
 }
 
 /////////////////////////////////////////////////////
@@ -293,6 +304,7 @@ static UIView* gMessageView;
 - (void) UIXExpandableMessageViewOkayPressed:(UIXExpandableMessageView*) view
 {
     [self dismissViewControllerAnimated:YES completion:^{
+        sController = nil;
     }];
 }
 
@@ -302,15 +314,20 @@ static UIView* gMessageView;
 - (void) UIXExpandableMessageViewEmailPressed:(UIXExpandableMessageView*) view
 {
     UIViewController* parent = self.presentingViewController;
+    
+    NSString* messageShort = self.messageShort;
+    NSString* messageDetail = self.messageDetail;
+    NSString* emailSubject = self.emailSubject;
+    
     [self dismissViewControllerAnimated:YES completion:^{
         
         MFMailComposeViewController* mail = [[MFMailComposeViewController alloc] init];
 #if !(USING_ARC)
         [mail autorelease];
 #endif
-        [mail setSubject:self.emailSubject];
+        [mail setSubject:emailSubject];
         
-        NSString* body = [NSString stringWithFormat:@"<H3>%@</H3><br/><br/><pre>%@</pre>",self.messageShort,self.messageDetail];
+        NSString* body = [NSString stringWithFormat:@"<H3>%@</H3><br/><br/><pre>%@</pre>",messageShort,messageDetail];
         
         [mail setMessageBody:body isHTML:YES];
         mail.mailComposeDelegate = self;
@@ -325,6 +342,7 @@ static UIView* gMessageView;
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [controller dismissViewControllerAnimated:YES completion:^{
+        sController = nil;
     }];
 }
 
