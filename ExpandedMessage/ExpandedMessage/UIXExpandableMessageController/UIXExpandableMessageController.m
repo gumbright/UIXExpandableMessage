@@ -301,6 +301,21 @@ static UIXExpandableMessageController* sController;
 /////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    CGSize parentSize = self.presentingViewController.view.bounds.size;
+    CGRect expandedFrame = CGRectMake(0, 0, parentSize.width - 200, parentSize.height - 200);
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.superview.autoresizesSubviews = YES;
+        self.view.superview.bounds = expandedFrame;
+        
+    }];    
+}
+
+/////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////
 - (void) UIXExpandableMessageViewOkayPressed:(UIXExpandableMessageView*) view
 {
     [self dismissViewControllerAnimated:YES completion:^{
