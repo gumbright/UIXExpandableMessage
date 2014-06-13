@@ -25,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F87523B1949F6A500F45A90 /* ExpandedMessage copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ExpandedMessage copy-Info.plist"; path = "/Users/gumbright/projects/crucible/ExpandedMessage/ExpandedMessage copy-Info.plist"; sourceTree = "<absolute>"; };
 		9F938DD11948D9440002F459 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9F938DD41948DF8E0002F459 /* AppDelegate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDelegate.txt; sourceTree = "<group>"; };
 		9FAF0504193F796B004C7FDD /* ExpandedMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpandedMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +80,6 @@
 				9FAF050D193F796B004C7FDD /* ExpandedMessage */,
 				9FAF0506193F796B004C7FDD /* Frameworks */,
 				9FAF0505193F796B004C7FDD /* Products */,
-				9F87523B1949F6A500F45A90 /* ExpandedMessage copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
