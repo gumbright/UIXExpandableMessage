@@ -224,6 +224,12 @@ static UIXExpandableMessageController* sController;
     return self;
 }
 
+- (id)initWithError:(NSError *)error
+{
+    return [self initWithTitle:@"An error occurred"
+                  shortMessage:error.localizedDescription
+                        detail:[NSString stringWithFormat:@"%@",error]];
+}
 /////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////

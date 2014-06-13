@@ -43,4 +43,15 @@
     [message presentInController:self animated:YES];
 }
 
+- (IBAction) errorPressed:(id)sender
+{
+    NSError* error = nil;
+    
+    [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/donkey/weasel/bananapants" error:&error];
+    UIXExpandableMessageController* message = [[UIXExpandableMessageController alloc] initWithError:error];
+    
+    message.emailSubject = @"Error detail from app";
+    
+    [message presentInController:self animated:YES];
+}
 @end
