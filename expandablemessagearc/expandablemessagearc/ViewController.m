@@ -54,4 +54,20 @@
     
     [message presentInController:self animated:YES];
 }
+
+- (IBAction) showPressed:(id)sender
+{
+    NSError* error;
+    NSURL* url = [[NSBundle mainBundle] URLForResource:@"AppDelegate" withExtension:@"txt"];
+    NSString* detail = [NSString stringWithContentsOfURL:url
+                                                encoding:NSUTF8StringEncoding error:&error];
+    
+    UIXExpandableMessageController* message = [[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
+                                                                                       shortMessage:@"Something happened and you really want to know more about it"
+                                                                                             detail:detail];
+
+    message.emailSubject = @"Error detail from app";
+    [message show];
+}
+
 @end
