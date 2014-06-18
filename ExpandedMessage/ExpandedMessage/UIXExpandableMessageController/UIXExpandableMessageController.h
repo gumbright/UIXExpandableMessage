@@ -17,4 +17,6 @@
 - (id)initWithTitle:(NSString *)title shortMessage:(NSString *)message detail:(NSString*) detail;
 - (id)initWithError:(NSError *)error additionalDetail:(NSString*) additionalDetail;
 - (void) presentInController:(UIViewController*) controller animated:(BOOL) animated;
+
+- (void) show;
 @end

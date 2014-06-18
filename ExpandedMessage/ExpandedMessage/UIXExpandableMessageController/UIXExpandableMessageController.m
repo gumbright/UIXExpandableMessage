@@ -111,7 +111,7 @@ static UIXExpandableMessageController* sController;
     CGSize sz = [s sizeWithFont:self.shortMessage.font forWidth:kCompactWidth lineBreakMode:NSLineBreakByWordWrapping];
     
     //set the short message position
-    r = CGRectMake(0, 0, kCompactWidth, sz.height + 20);
+    r = CGRectMake(0, 0, kCompactWidth, sz.height + 40);
     self.shortMessage.frame = r;
     
     //hide the detail
@@ -206,7 +206,36 @@ static UIXExpandableMessageController* sController;
 @end
 
 @implementation UIXExpandableMessageController 
+/////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////
++ (UIView *)superViewContainer {
+    
+    //Choose the the top subview view of the topmost presented view controller
+    UIView *rootView = [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentedViewController].view;
+    
+    //If not controller is presented then look for the topmost subview of the root view controller.
+    if(!rootView) {
+        rootView = [[[UIApplication sharedApplication] keyWindow] rootViewController].view;
+    }
+    
+    return rootView;
+}
 
+/////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////
+- (UIViewController*) superViewController
+{
+    UIViewController *rootView = [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentedViewController];
+    
+    //If not controller is presented then look for the topmost subview of the root view controller.
+    if(!rootView) {
+        rootView = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    }
+    
+    return rootView;
+}
 /////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////
@@ -279,6 +308,14 @@ static UIXExpandableMessageController* sController;
     self.view.superview.autoresizesSubviews = YES;
     self.view.superview.layer.cornerRadius = 10;
     self.view.superview.clipsToBounds = YES;
+}
+
+/////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////
+- (void) show
+{
+    [self presentInController: [self superViewController] animated:YES];
 }
 
 /////////////////////////////////////////////////////
