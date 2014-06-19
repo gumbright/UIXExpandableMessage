@@ -11,8 +11,10 @@
 #import <QuartzCore/QuartzCore.h>
 
 static CGFloat kCompactWidth = 300.0;
+static CGFloat kShortMesssageSeparator = 20.0;
+
 static UIView* gMessageView;
-static UIXExpandableMessageController* sController;
+static UIXExpandableMessageController* sController = nil;
 
 @class UIXExpandableMessageView;
 
@@ -110,9 +112,12 @@ static UIXExpandableMessageController* sController;
     CGSize sz = [s sizeWithFont:self.shortMessage.font constrainedToSize:CGSizeMake(kCompactWidth, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     
     //!!! should figure a max height and constrain so that window doesnt over flow
+
+    CGSize expandedSize = [self.delegate UIXExpandableMessageViewExpandedSize:self];
+    CGFloat maxHeight = expandedSize.height - ((kShortMesssageSeparator * 2) + self.navBar.bounds.size.height + self.toolBar.bounds.size.height);
     
     //set the short message position
-    r = CGRectMake(0, 0, kCompactWidth, sz.height + 40);
+    r = CGRectMake(0, kShortMesssageSeparator, kCompactWidth, (sz.height < maxHeight) ? sz.height : maxHeight);
     self.shortMessage.frame = r;
     
     //hide the detail
@@ -123,7 +128,7 @@ static UIXExpandableMessageController* sController;
     
     //set the content view
     r = self.contentView.frame;
-    r.size.height = self.shortMessage.bounds.size.height;
+    r.size.height = self.shortMessage.bounds.size.height + (kShortMesssageSeparator * 2);
     self.contentView.frame = r;
     
     r = CGRectMake(0, 0, kCompactWidth, self.contentView.bounds.size.height + self.navBar.bounds.size.height + self.toolBar.bounds.size.height);
@@ -328,8 +333,12 @@ static UIXExpandableMessageController* sController;
 /////////////////////////////////////////////////////
 - (CGSize) UIXExpandableMessageViewExpandedSize: (UIXExpandableMessageView*) view
 {
-    CGRect r = self.presentingViewController.view.bounds;
-    return r.size;
+    CGSize parentSize = self.presentingViewController.view.bounds.size;
+    CGRect expandedFrame = CGRectMake(0, 0, parentSize.width - 200, parentSize.height - 200);
+    return expandedFrame.size;
+    
+//    CGRect r = self.presentingViewController.view.bounds;
+//    return r.size;
 }
 
 /////////////////////////////////////////////////////
@@ -337,8 +346,12 @@ static UIXExpandableMessageController* sController;
 /////////////////////////////////////////////////////
 - (void) UIXExpandableMessageViewExpanded: (UIXExpandableMessageView*) view
 {
-    CGSize parentSize = self.presentingViewController.view.bounds.size;
-    CGRect expandedFrame = CGRectMake(0, 0, parentSize.width - 200, parentSize.height - 200);
+//    CGSize parentSize = self.presentingViewController.view.bounds.size;
+//    CGRect expandedFrame = CGRectMake(0, 0, parentSize.width - 200, parentSize.height - 200);
+    
+    CGSize expandedSize = [self UIXExpandableMessageViewExpandedSize:view];
+    CGRect expandedFrame = CGRectZero;
+    expandedFrame.size = expandedSize;
     
     [UIView animateWithDuration:0.25 animations:^{
         self.view.superview.autoresizesSubviews = YES;
