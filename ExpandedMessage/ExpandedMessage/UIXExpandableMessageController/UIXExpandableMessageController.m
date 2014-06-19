@@ -12,6 +12,7 @@
 
 static CGFloat kCompactWidth = 300.0;
 static CGFloat kShortMesssageSeparator = 20.0;
+static CGFloat kExpandedEdgeInset = 100.0;
 
 static UIView* gMessageView;
 static UIXExpandableMessageController* sController = nil;
@@ -19,7 +20,7 @@ static UIXExpandableMessageController* sController = nil;
 @class UIXExpandableMessageView;
 
 @protocol UIXExpandableMessageViewDelegate <NSObject>
-- (CGSize) UIXExpandableMessageViewExpandedSize: (UIXExpandableMessageView*) view;
+- (CGSize) UIXExpandableMessageViewExpandedSize;
 - (void) UIXExpandableMessageViewExpanded: (UIXExpandableMessageView*) view;
 
 @optional
@@ -42,6 +43,7 @@ static UIXExpandableMessageController* sController = nil;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem* separator;
 @property (nonatomic, strong) IBOutlet UIView* contentView;
 @property (nonatomic, strong) IBOutlet UIView* detailContent;
+@property (nonatomic, strong) IBOutlet UIView* separatorView;
 @property (nonatomic, assign) NSObject<UIXExpandableMessageViewDelegate>* delegate;
 
 @property (nonatomic, strong) UIXExpandableMessageController* controller;
@@ -111,9 +113,8 @@ static UIXExpandableMessageController* sController = nil;
     NSString* s = self.shortMessage.text;
     CGSize sz = [s sizeWithFont:self.shortMessage.font constrainedToSize:CGSizeMake(kCompactWidth, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     
-    //!!! should figure a max height and constrain so that window doesnt over flow
 
-    CGSize expandedSize = [self.delegate UIXExpandableMessageViewExpandedSize:self];
+    CGSize expandedSize = [self.delegate UIXExpandableMessageViewExpandedSize /*:self*/];
     CGFloat maxHeight = expandedSize.height - ((kShortMesssageSeparator * 2) + self.navBar.bounds.size.height + self.toolBar.bounds.size.height);
     
     //set the short message position
@@ -145,13 +146,17 @@ static UIXExpandableMessageController* sController = nil;
     [self.delegate UIXExpandableMessageViewExpanded:self];
     
     NSString* s = self.shortMessage.text;
-    CGSize sz = [s sizeWithFont:self.shortMessage.font forWidth:self.bounds.size.width lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize sz = [s sizeWithFont:self.shortMessage.font constrainedToSize:CGSizeMake(self.superview.bounds.size.width, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     
-    CGRect r = CGRectMake(0, 0, self.bounds.size.width, sz.height + 20);
+    CGRect r = CGRectMake(0, 0, self.bounds.size.width, ceil(sz.height) + 20);
     self.shortMessage.frame = r;
 
-    r = CGRectMake(0, self.shortMessage.bounds.size.height, self.bounds.size.width, self.bounds.size.height-self.shortMessage.bounds.size.height - self.toolBar.bounds.size.height);
+    r = CGRectMake(0, self.shortMessage.bounds.size.height, self.bounds.size.width, self.superview.bounds.size.height - (self.shortMessage.bounds.size.height + self.navBar.bounds.size.height + self.toolBar.bounds.size.height));
     self.detailContent.frame = r;
+    
+    r = self.messageDetail.bounds;
+    r.size.height = self.detailContent.bounds.size.height - self.separatorView.bounds.size.height;
+    self.messageDetail.bounds = r;
     
     if ([MFMailComposeViewController canSendMail])
     {
@@ -255,7 +260,6 @@ static UIXExpandableMessageController* sController = nil;
         self.messageShort = message;
         self.messageDetail = detail;
         self.messageTitle = title;
-//        sController = self;
     }
     return self;
 }
@@ -270,6 +274,7 @@ static UIXExpandableMessageController* sController = nil;
                   shortMessage:error.localizedDescription
                         detail:detail];
 }
+
 /////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////
@@ -331,14 +336,11 @@ static UIXExpandableMessageController* sController = nil;
 /////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////
-- (CGSize) UIXExpandableMessageViewExpandedSize: (UIXExpandableMessageView*) view
+- (CGSize) UIXExpandableMessageViewExpandedSize //: (UIXExpandableMessageView*) view
 {
     CGSize parentSize = self.presentingViewController.view.bounds.size;
-    CGRect expandedFrame = CGRectMake(0, 0, parentSize.width - 200, parentSize.height - 200);
+    CGRect expandedFrame = CGRectMake(0, 0, parentSize.width - (kExpandedEdgeInset * 2), parentSize.height - (kExpandedEdgeInset * 2));
     return expandedFrame.size;
-    
-//    CGRect r = self.presentingViewController.view.bounds;
-//    return r.size;
 }
 
 /////////////////////////////////////////////////////
@@ -346,10 +348,7 @@ static UIXExpandableMessageController* sController = nil;
 /////////////////////////////////////////////////////
 - (void) UIXExpandableMessageViewExpanded: (UIXExpandableMessageView*) view
 {
-//    CGSize parentSize = self.presentingViewController.view.bounds.size;
-//    CGRect expandedFrame = CGRectMake(0, 0, parentSize.width - 200, parentSize.height - 200);
-    
-    CGSize expandedSize = [self UIXExpandableMessageViewExpandedSize:view];
+    CGSize expandedSize = [self UIXExpandableMessageViewExpandedSize /*:view*/];
     CGRect expandedFrame = CGRectZero;
     expandedFrame.size = expandedSize;
     
@@ -365,8 +364,9 @@ static UIXExpandableMessageController* sController = nil;
 /////////////////////////////////////////////////////
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    CGSize parentSize = self.presentingViewController.view.bounds.size;
-    CGRect expandedFrame = CGRectMake(0, 0, parentSize.width - 200, parentSize.height - 200);
+    CGSize viewSize = [self UIXExpandableMessageViewExpandedSize];
+
+    CGRect expandedFrame = CGRectMake(0, 0, viewSize.width, viewSize.height);
     
     [UIView animateWithDuration:0.25 animations:^{
         self.view.superview.autoresizesSubviews = YES;
@@ -380,9 +380,7 @@ static UIXExpandableMessageController* sController = nil;
 /////////////////////////////////////////////////////
 - (void) UIXExpandableMessageViewOkayPressed:(UIXExpandableMessageView*) view
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-//        sController = nil;
-    }];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 /////////////////////////////////////////////////////
