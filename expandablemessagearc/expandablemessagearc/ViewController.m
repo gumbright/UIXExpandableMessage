@@ -35,12 +35,12 @@
                                                 encoding:NSUTF8StringEncoding error:&error];
     
     UIXExpandableMessageController* message = [[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
-                                                                                       shortMessage:@"Something happened and you really want to know more about it"
+                                                                                       shortMessage:@"Something happened and you really want to know more about it. Really. Its something that is of critical importance. You should pay attention to it."
                                                                                              detail:detail];
     
     message.emailSubject = @"Error detail from app";
     
-    [message presentInController:self animated:YES];
+    [message show];
 }
 
 - (IBAction) errorPressed:(id)sender
@@ -52,7 +52,7 @@
     
     message.emailSubject = @"Error detail from app";
     
-    [message presentInController:self animated:YES];
+    [message show];
 }
 
 - (IBAction) showPressed:(id)sender

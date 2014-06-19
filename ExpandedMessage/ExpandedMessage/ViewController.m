@@ -34,16 +34,12 @@
     NSString* detail = [NSString stringWithContentsOfURL:url
                                                 encoding:NSUTF8StringEncoding error:&error];
     
-    UIXExpandableMessageController* message = [[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
+    UIXExpandableMessageController* message = [[[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
                                                                                        shortMessage:@"Something happened and you really want to know more about it"
-                                                                                             detail:detail];
-#if !(USING_ARC)
-    [detail autorelease];
-#endif
-    
+                                                                                             detail:detail] autorelease];
     message.emailSubject = @"Error detail from app";
     
-    [message presentInController:self animated:YES];
+    [message show];
 }
 
 - (IBAction) errorPressed:(id)sender
@@ -51,12 +47,13 @@
     NSError* error = nil;
     
     [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/donkey/weasel/bananapants" error:&error];
-    UIXExpandableMessageController* message = [[UIXExpandableMessageController alloc] initWithError:error
-                                                                                   additionalDetail:[NSString stringWithFormat:@"error occurred near %s:%d",__FILE__,__LINE__]];
+    UIXExpandableMessageController* message = [[[UIXExpandableMessageController alloc] initWithError:error
+                                                                                   additionalDetail:[NSString stringWithFormat:@"error occurred near %s:%d",__FILE__,__LINE__]] autorelease];
     
     message.emailSubject = @"Error detail from app";
+    [message autorelease];
     
-    [message presentInController:self animated:YES];
+    [message show];
 }
 
 - (IBAction) showPressed:(id)sender
@@ -66,12 +63,9 @@
     NSString* detail = [NSString stringWithContentsOfURL:url
                                                 encoding:NSUTF8StringEncoding error:&error];
     
-    UIXExpandableMessageController* message = [[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
+    UIXExpandableMessageController* message = [[[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
                                                                                        shortMessage:@"Something happened and you really want to know more about it"
-                                                                                             detail:detail];
-#if !(USING_ARC)
-    [detail autorelease];
-#endif
+                                                                                             detail:detail] autorelease];
     
     message.emailSubject = @"Error detail from app";
     [message show];

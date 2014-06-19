@@ -107,8 +107,9 @@ static UIXExpandableMessageController* sController;
 {
     CGRect r;
     NSString* s = self.shortMessage.text;
+    CGSize sz = [s sizeWithFont:self.shortMessage.font constrainedToSize:CGSizeMake(kCompactWidth, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     
-    CGSize sz = [s sizeWithFont:self.shortMessage.font forWidth:kCompactWidth lineBreakMode:NSLineBreakByWordWrapping];
+    //!!! should figure a max height and constrain so that window doesnt over flow
     
     //set the short message position
     r = CGRectMake(0, 0, kCompactWidth, sz.height + 40);
@@ -227,15 +228,16 @@ static UIXExpandableMessageController* sController;
 /////////////////////////////////////////////////////
 - (UIViewController*) superViewController
 {
-    UIViewController *rootView = [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentedViewController];
+    UIViewController *controller = [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentedViewController];
     
     //If not controller is presented then look for the topmost subview of the root view controller.
-    if(!rootView) {
-        rootView = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    if(!controller) {
+        controller = [[[UIApplication sharedApplication] keyWindow] rootViewController];
     }
     
-    return rootView;
+    return controller;
 }
+
 /////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////
@@ -248,11 +250,14 @@ static UIXExpandableMessageController* sController;
         self.messageShort = message;
         self.messageDetail = detail;
         self.messageTitle = title;
-        sController = self;
+//        sController = self;
     }
     return self;
 }
 
+/////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////
 - (id)initWithError:(NSError *)error additionalDetail:(NSString*) additionalDetail;
 {
     NSString* detail = (additionalDetail)?[NSString stringWithFormat:@"%@\n\n%@",error,additionalDetail]:[NSString stringWithFormat:@"%@",error];
@@ -363,7 +368,7 @@ static UIXExpandableMessageController* sController;
 - (void) UIXExpandableMessageViewOkayPressed:(UIXExpandableMessageView*) view
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        sController = nil;
+//        sController = nil;
     }];
 }
 
@@ -377,6 +382,12 @@ static UIXExpandableMessageController* sController;
     NSString* messageShort = self.messageShort;
     NSString* messageDetail = self.messageDetail;
     NSString* emailSubject = self.emailSubject;
+    
+#if !(USING_ARC)
+    sController = [self retain];
+#else
+    sController = self;
+#endif
     
     [self dismissViewControllerAnimated:YES completion:^{
         
@@ -401,6 +412,9 @@ static UIXExpandableMessageController* sController;
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [controller dismissViewControllerAnimated:YES completion:^{
+#if !(USING_ARC)
+        [sController release];
+#endif
         sController = nil;
     }];
 }

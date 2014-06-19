@@ -12,11 +12,13 @@
 #define				USING_ARC			((__has_feature(objc_arc)))
 
 @interface UIXExpandableMessageController : UIViewController <MFMailComposeViewControllerDelegate>
-@property (nonatomic, copy) NSString* emailSubject;
+
+@property (nonatomic, copy) NSString* emailSubject;  //subject line value for email sent from UIXExpandableMessage
 
 - (id)initWithTitle:(NSString *)title shortMessage:(NSString *)message detail:(NSString*) detail;
 - (id)initWithError:(NSError *)error additionalDetail:(NSString*) additionalDetail;
-- (void) presentInController:(UIViewController*) controller animated:(BOOL) animated;
 
+//display the message
 - (void) show;
+
 @end
