@@ -47,6 +47,9 @@ UIXExpandableMessageContoller does not allow for much interactivity, but a deleg
 - (void) messageDidExpand:(UIXExpandableMessageController*) expandableMessageController;
 - (void) messageDidSelectEmail:(UIXExpandableMessageController*) expandableMessageController;
 ```
+#Including UIXExpandableMessageContoller in your project
+
+Just add the UIXExpandableMessageController folder to your project making sure all contents are included in your desired target (2 source files, 1 xib).
 
 ##Known issues
 Scrolling in the detail view can be choppy, have not figured that one out yet.

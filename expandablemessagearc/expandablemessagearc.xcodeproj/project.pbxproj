@@ -21,9 +21,9 @@
 		9F87526A1949FA7B00F45A90 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F87524C1949FA7B00F45A90 /* UIKit.framework */; };
 		9F8752721949FA7B00F45A90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F8752701949FA7B00F45A90 /* InfoPlist.strings */; };
 		9F8752741949FA7B00F45A90 /* expandablemessagearcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8752731949FA7B00F45A90 /* expandablemessagearcTests.m */; };
-		9F8752811949FA9300F45A90 /* UIXExpandableMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F87527F1949FA9300F45A90 /* UIXExpandableMessageController.m */; };
-		9F8752821949FA9300F45A90 /* UIXExpandableMessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8752801949FA9300F45A90 /* UIXExpandableMessageController.xib */; };
 		9F8752851949FD7D00F45A90 /* AppDelegate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9F8752841949FD7D00F45A90 /* AppDelegate.txt */; };
+		9F8752B01954BEB600F45A90 /* UIXExpandableMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8752AE1954BEB600F45A90 /* UIXExpandableMessageController.m */; };
+		9F8752B11954BEB600F45A90 /* UIXExpandableMessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8752AF1954BEB600F45A90 /* UIXExpandableMessageController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +56,10 @@
 		9F87526F1949FA7B00F45A90 /* expandablemessagearcTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "expandablemessagearcTests-Info.plist"; sourceTree = "<group>"; };
 		9F8752711949FA7B00F45A90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9F8752731949FA7B00F45A90 /* expandablemessagearcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = expandablemessagearcTests.m; sourceTree = "<group>"; };
-		9F87527E1949FA9300F45A90 /* UIXExpandableMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIXExpandableMessageController.h; sourceTree = "<group>"; };
-		9F87527F1949FA9300F45A90 /* UIXExpandableMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIXExpandableMessageController.m; sourceTree = "<group>"; };
-		9F8752801949FA9300F45A90 /* UIXExpandableMessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIXExpandableMessageController.xib; sourceTree = "<group>"; };
 		9F8752841949FD7D00F45A90 /* AppDelegate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDelegate.txt; sourceTree = "<group>"; };
+		9F8752AD1954BEB600F45A90 /* UIXExpandableMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIXExpandableMessageController.h; sourceTree = "<group>"; };
+		9F8752AE1954BEB600F45A90 /* UIXExpandableMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIXExpandableMessageController.m; sourceTree = "<group>"; };
+		9F8752AF1954BEB600F45A90 /* UIXExpandableMessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIXExpandableMessageController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +89,8 @@
 		9F87523C1949FA7B00F45A90 = {
 			isa = PBXGroup;
 			children = (
+				9F8752AC1954BEB600F45A90 /* UIXExpandableMessageController */,
 				9F8752831949FD7D00F45A90 /* resources */,
-				9F87527D1949FA9300F45A90 /* UIXExpandableMessageController */,
 				9F87524E1949FA7B00F45A90 /* expandablemessagearc */,
 				9F87526D1949FA7B00F45A90 /* expandablemessagearcTests */,
 				9F8752471949FA7B00F45A90 /* Frameworks */,
@@ -161,17 +161,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9F87527D1949FA9300F45A90 /* UIXExpandableMessageController */ = {
-			isa = PBXGroup;
-			children = (
-				9F87527E1949FA9300F45A90 /* UIXExpandableMessageController.h */,
-				9F87527F1949FA9300F45A90 /* UIXExpandableMessageController.m */,
-				9F8752801949FA9300F45A90 /* UIXExpandableMessageController.xib */,
-			);
-			name = UIXExpandableMessageController;
-			path = ../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController;
-			sourceTree = "<group>";
-		};
 		9F8752831949FD7D00F45A90 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +168,16 @@
 			);
 			name = resources;
 			path = ../ExpandedMessage/ExpandedMessage/resources;
+			sourceTree = "<group>";
+		};
+		9F8752AC1954BEB600F45A90 /* UIXExpandableMessageController */ = {
+			isa = PBXGroup;
+			children = (
+				9F8752AD1954BEB600F45A90 /* UIXExpandableMessageController.h */,
+				9F8752AE1954BEB600F45A90 /* UIXExpandableMessageController.m */,
+				9F8752AF1954BEB600F45A90 /* UIXExpandableMessageController.xib */,
+			);
+			path = UIXExpandableMessageController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +258,7 @@
 			files = (
 				9F8752611949FA7B00F45A90 /* Images.xcassets in Resources */,
 				9F8752531949FA7B00F45A90 /* InfoPlist.strings in Resources */,
-				9F8752821949FA9300F45A90 /* UIXExpandableMessageController.xib in Resources */,
+				9F8752B11954BEB600F45A90 /* UIXExpandableMessageController.xib in Resources */,
 				9F87525C1949FA7B00F45A90 /* Main.storyboard in Resources */,
 				9F8752851949FD7D00F45A90 /* AppDelegate.txt in Resources */,
 			);
@@ -280,7 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F8752811949FA9300F45A90 /* UIXExpandableMessageController.m in Sources */,
+				9F8752B01954BEB600F45A90 /* UIXExpandableMessageController.m in Sources */,
 				9F87525F1949FA7B00F45A90 /* ViewController.m in Sources */,
 				9F8752591949FA7B00F45A90 /* AppDelegate.m in Sources */,
 				9F8752551949FA7B00F45A90 /* main.m in Sources */,
@@ -490,6 +489,7 @@
 				9F8752791949FA7B00F45A90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9F87527A1949FA7B00F45A90 /* Build configuration list for PBXNativeTarget "expandablemessagearcTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +498,7 @@
 				9F87527C1949FA7B00F45A90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

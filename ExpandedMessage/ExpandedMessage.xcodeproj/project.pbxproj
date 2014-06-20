@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F8752B61954BEEA00F45A90 /* UIXExpandableMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8752B41954BEEA00F45A90 /* UIXExpandableMessageController.m */; };
+		9F8752B71954BEEA00F45A90 /* UIXExpandableMessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8752B51954BEEA00F45A90 /* UIXExpandableMessageController.xib */; };
 		9F938DD21948D9440002F459 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F938DD11948D9440002F459 /* MessageUI.framework */; };
 		9F938DD61948E0530002F459 /* AppDelegate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9F938DD41948DF8E0002F459 /* AppDelegate.txt */; };
 		9FAF0508193F796B004C7FDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAF0507193F796B004C7FDD /* UIKit.framework */; };
@@ -20,11 +22,12 @@
 		9FAF051E193F796B004C7FDD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FAF051D193F796B004C7FDD /* Default-568h@2x.png */; };
 		9FAF0521193F796B004C7FDD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF0520193F796B004C7FDD /* ViewController.m */; };
 		9FAF0524193F796B004C7FDD /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FAF0522193F796B004C7FDD /* ViewController.xib */; };
-		9FAF052D193F7CA6004C7FDD /* UIXExpandableMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF052C193F7CA6004C7FDD /* UIXExpandableMessageController.m */; };
-		9FAF052F193F7CC7004C7FDD /* UIXExpandableMessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FAF052E193F7CC7004C7FDD /* UIXExpandableMessageController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F8752B31954BEEA00F45A90 /* UIXExpandableMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIXExpandableMessageController.h; sourceTree = "<group>"; };
+		9F8752B41954BEEA00F45A90 /* UIXExpandableMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIXExpandableMessageController.m; sourceTree = "<group>"; };
+		9F8752B51954BEEA00F45A90 /* UIXExpandableMessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIXExpandableMessageController.xib; sourceTree = "<group>"; };
 		9F938DD11948D9440002F459 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9F938DD41948DF8E0002F459 /* AppDelegate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDelegate.txt; sourceTree = "<group>"; };
 		9FAF0504193F796B004C7FDD /* ExpandedMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpandedMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,9 +46,6 @@
 		9FAF051F193F796B004C7FDD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9FAF0520193F796B004C7FDD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9FAF0523193F796B004C7FDD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		9FAF052B193F7CA6004C7FDD /* UIXExpandableMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIXExpandableMessageController.h; path = ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.h; sourceTree = "<group>"; };
-		9FAF052C193F7CA6004C7FDD /* UIXExpandableMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIXExpandableMessageController.m; path = ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m; sourceTree = "<group>"; };
-		9FAF052E193F7CC7004C7FDD /* UIXExpandableMessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UIXExpandableMessageController.xib; path = ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +63,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F8752B21954BEEA00F45A90 /* UIXExpandableMessageController */ = {
+			isa = PBXGroup;
+			children = (
+				9F8752B31954BEEA00F45A90 /* UIXExpandableMessageController.h */,
+				9F8752B41954BEEA00F45A90 /* UIXExpandableMessageController.m */,
+				9F8752B51954BEEA00F45A90 /* UIXExpandableMessageController.xib */,
+			);
+			path = UIXExpandableMessageController;
+			sourceTree = "<group>";
+		};
 		9F938DD31948DF8E0002F459 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,8 +85,8 @@
 		9FAF04FB193F796B004C7FDD = {
 			isa = PBXGroup;
 			children = (
+				9F8752B21954BEEA00F45A90 /* UIXExpandableMessageController */,
 				9F938DD31948DF8E0002F459 /* resources */,
-				9FAF052A193F7C4B004C7FDD /* UIXExpandableMessageController */,
 				9FAF050D193F796B004C7FDD /* ExpandedMessage */,
 				9FAF0506193F796B004C7FDD /* Frameworks */,
 				9FAF0505193F796B004C7FDD /* Products */,
@@ -127,16 +137,6 @@
 				9FAF051D193F796B004C7FDD /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9FAF052A193F7C4B004C7FDD /* UIXExpandableMessageController */ = {
-			isa = PBXGroup;
-			children = (
-				9FAF052B193F7CA6004C7FDD /* UIXExpandableMessageController.h */,
-				9FAF052C193F7CA6004C7FDD /* UIXExpandableMessageController.m */,
-				9FAF052E193F7CC7004C7FDD /* UIXExpandableMessageController.xib */,
-			);
-			name = UIXExpandableMessageController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,11 +192,11 @@
 			files = (
 				9FAF0512193F796B004C7FDD /* InfoPlist.strings in Resources */,
 				9FAF051A193F796B004C7FDD /* Default.png in Resources */,
+				9F8752B71954BEEA00F45A90 /* UIXExpandableMessageController.xib in Resources */,
 				9FAF051C193F796B004C7FDD /* Default@2x.png in Resources */,
 				9FAF051E193F796B004C7FDD /* Default-568h@2x.png in Resources */,
 				9F938DD61948E0530002F459 /* AppDelegate.txt in Resources */,
 				9FAF0524193F796B004C7FDD /* ViewController.xib in Resources */,
-				9FAF052F193F7CC7004C7FDD /* UIXExpandableMessageController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,10 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F8752B61954BEEA00F45A90 /* UIXExpandableMessageController.m in Sources */,
 				9FAF0514193F796B004C7FDD /* main.m in Sources */,
 				9FAF0518193F796B004C7FDD /* AppDelegate.m in Sources */,
 				9FAF0521193F796B004C7FDD /* ViewController.m in Sources */,
-				9FAF052D193F7CA6004C7FDD /* UIXExpandableMessageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
