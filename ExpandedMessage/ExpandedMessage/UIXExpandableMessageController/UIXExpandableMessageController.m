@@ -19,7 +19,7 @@ static UIXExpandableMessageController* sController = nil;
 
 @class UIXExpandableMessageView;
 
-@protocol UIXExpandableMessageViewDelegate <NSObject>
+@protocol UIXExpandableMessageViewInternalDelegate <NSObject>
 - (CGSize) UIXExpandableMessageViewExpandedSize;
 - (void) UIXExpandableMessageViewExpanded: (UIXExpandableMessageView*) view;
 
@@ -44,7 +44,7 @@ static UIXExpandableMessageController* sController = nil;
 @property (nonatomic, strong) IBOutlet UIView* contentView;
 @property (nonatomic, strong) IBOutlet UIView* detailContent;
 @property (nonatomic, strong) IBOutlet UIView* separatorView;
-@property (nonatomic, assign) NSObject<UIXExpandableMessageViewDelegate>* delegate;
+@property (nonatomic, assign) NSObject<UIXExpandableMessageViewInternalDelegate>* delegate;
 
 @property (nonatomic, strong) UIXExpandableMessageController* controller;
 @end
@@ -85,7 +85,9 @@ static UIXExpandableMessageController* sController = nil;
 /////////////////////////////////////////////////////
 - (void) dealloc
 {
-    NSLog(@"view dealloc");
+#if !(USING_ARC)
+    [super dealloc];
+#endif
 }
 
 /////////////////////////////////////////////////////
@@ -200,7 +202,7 @@ static UIXExpandableMessageController* sController = nil;
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-@interface UIXExpandableMessageController ()<UIXExpandableMessageViewDelegate>
+@interface UIXExpandableMessageController ()<UIXExpandableMessageViewInternalDelegate>
 
 //metrics
 @property (nonatomic, assign) CGSize compactSize;
@@ -217,6 +219,34 @@ static UIXExpandableMessageController* sController = nil;
 @end
 
 @implementation UIXExpandableMessageController 
+/////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////
++ (UIXExpandableMessageController*) messageWithTitle:(NSString *)title shortMessage:(NSString *)message detail:(NSString*) detail
+{
+    UIXExpandableMessageController* controller = [[UIXExpandableMessageController alloc] initWithTitle:title shortMessage:message detail:detail];
+    
+#if !(USING_ARC)
+    [controller autorelease];
+#endif
+    return controller;
+}
+
+/////////////////////////////////////////////////////
+//
+/////////////////////////////////////////////////////
++ (UIXExpandableMessageController*) messageWithError:(NSError *)error additionalDetail:(NSString*) detail
+{
+    UIXExpandableMessageController* controller = [[UIXExpandableMessageController alloc] initWithError:error additionalDetail:detail];
+#if !(USING_ARC)
+    [controller autorelease];
+#endif
+    return controller;
+}
+
 /////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////
@@ -356,6 +386,10 @@ static UIXExpandableMessageController* sController = nil;
         self.view.superview.autoresizesSubviews = YES;
         self.view.superview.bounds = expandedFrame;
 
+        if ([self.expandableMessageDelegate respondsToSelector:@selector(messageDidExpand:)])
+        {
+            [self.expandableMessageDelegate messageDidExpand:self];
+        }
     }];
 }
 
@@ -381,6 +415,10 @@ static UIXExpandableMessageController* sController = nil;
 - (void) UIXExpandableMessageViewOkayPressed:(UIXExpandableMessageView*) view
 {
     [self dismissViewControllerAnimated:YES completion:^{}];
+    if ([self.expandableMessageDelegate respondsToSelector:@selector(messageDidDismiss:)])
+    {
+        [self.expandableMessageDelegate messageDidDismiss:self];
+    }
 }
 
 /////////////////////////////////////////////////////
@@ -388,10 +426,15 @@ static UIXExpandableMessageController* sController = nil;
 /////////////////////////////////////////////////////
 - (void) UIXExpandableMessageViewEmailPressed:(UIXExpandableMessageView*) view
 {
+    if ([self.expandableMessageDelegate respondsToSelector:@selector(messageDidSelectEmail:)])
+    {
+        [self.expandableMessageDelegate messageDidSelectEmail:self];
+    }
     UIViewController* parent = self.presentingViewController;
     
     NSString* messageShort = self.messageShort;
     NSString* messageDetail = self.messageDetail;
+    
     NSString* emailSubject = self.emailSubject;
     
 #if !(USING_ARC)
@@ -407,13 +450,17 @@ static UIXExpandableMessageController* sController = nil;
         [mail autorelease];
 #endif
         [mail setSubject:emailSubject];
+        if (self.emailRecipients)
+        {
+            [mail setToRecipients:self.emailRecipients];
+        }
         
         NSString* body = [NSString stringWithFormat:@"<H3>%@</H3><br/><br/><pre>%@</pre>",messageShort,messageDetail];
         
         [mail setMessageBody:body isHTML:YES];
         mail.mailComposeDelegate = self;
-        [parent presentViewController:mail animated:YES completion:^{
-        }];
+        
+        [parent presentViewController:mail animated:YES completion:^{}];
     }];
 }
 
@@ -423,6 +470,10 @@ static UIXExpandableMessageController* sController = nil;
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [controller dismissViewControllerAnimated:YES completion:^{
+        if ([self.expandableMessageDelegate respondsToSelector:@selector(messageDidDismiss:)])
+        {
+            [self.expandableMessageDelegate messageDidDismiss:self];
+        }
 #if !(USING_ARC)
         [sController release];
 #endif

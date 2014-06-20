@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIXExpandableMessageController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIXExpandableMessageViewDelegate>
 
 @end

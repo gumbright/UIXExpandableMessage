@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "UIXExpandableMessageController.h"
 
 @interface ViewController ()
 
@@ -34,11 +33,11 @@
     NSString* detail = [NSString stringWithContentsOfURL:url
                                                 encoding:NSUTF8StringEncoding error:&error];
     
-    UIXExpandableMessageController* message = [[[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
+    UIXExpandableMessageController* message = [UIXExpandableMessageController messageWithTitle:@"My Title"
                                                                                        shortMessage:@"Something happened and you really want to know more about it"
-                                                                                             detail:detail] autorelease];
+                                                                                             detail:detail];
     message.emailSubject = @"Error detail from app";
-    
+    message.expandableMessageDelegate = self;
     [message show];
 }
 
@@ -47,27 +46,28 @@
     NSError* error = nil;
     
     [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/donkey/weasel/bananapants" error:&error];
-    UIXExpandableMessageController* message = [[[UIXExpandableMessageController alloc] initWithError:error
-                                                                                   additionalDetail:[NSString stringWithFormat:@"error occurred near %s:%d",__FILE__,__LINE__]] autorelease];
+    UIXExpandableMessageController* message = [UIXExpandableMessageController messageWithError:error
+                                                                                   additionalDetail:[NSString stringWithFormat:@"error occurred near %s:%d",__FILE__,__LINE__]];
     
     message.emailSubject = @"Error detail from app";
-    [message autorelease];
+    message.emailRecipients = @[@"bob@here.com",@"mary@there.com"];
+    message.expandableMessageDelegate = self;
     
     [message show];
 }
 
-- (IBAction) showPressed:(id)sender
+- (void) messageDidDismiss:(UIXExpandableMessageController *)expandableMessageController
 {
-    NSError* error;
-    NSURL* url = [[NSBundle mainBundle] URLForResource:@"AppDelegate" withExtension:@"txt"];
-    NSString* detail = [NSString stringWithContentsOfURL:url
-                                                encoding:NSUTF8StringEncoding error:&error];
-    
-    UIXExpandableMessageController* message = [[[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
-                                                                                       shortMessage:@"Something happened and you really want to know more about it"
-                                                                                             detail:detail] autorelease];
-    
-    message.emailSubject = @"Error detail from app";
-    [message show];
+    NSLog(@"UIXExpandableMessageController was dismissed");
+}
+
+- (void) messageDidSelectEmail:(UIXExpandableMessageController *)expandableMessageController
+{
+    NSLog(@"UIXExpandableMessageController started email");
+}
+
+- (void) messageDidExpand:(UIXExpandableMessageController *)expandableMessageController
+{
+    NSLog(@"UIXExpandableMessageController expanded");
 }
 @end

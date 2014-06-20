@@ -10,11 +10,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
-            timestampString = "424282952.319989"
+            timestampString = "424902058.501151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-dealloc"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
+            timestampString = "424981260.072404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "-layoutSubviews"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
-            timestampString = "424282952.319989"
+            timestampString = "424981260.072404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-layoutCompact"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +58,107 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
-            timestampString = "424282952.319989"
+            timestampString = "424981260.072404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "-initWithTitle:shortMessage:detail:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
+            timestampString = "424981260.072404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
+            landmarkName = "@implementation UIXExpandableMessageController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
+            timestampString = "424981260.072404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "@implementation UIXExpandableMessageView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
+            timestampString = "424981260.072404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "@implementation UIXExpandableMessageController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
+            timestampString = "424981260.072404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "-dealloc"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
+            timestampString = "424981260.072404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "-layoutExpanded"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
+            timestampString = "424981260.072404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-layoutCompact"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,43 +170,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
-            timestampString = "424286519.199096"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "-presentInController:animated:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
-            timestampString = "424287005.718863"
+            timestampString = "424981260.072404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "314"
             endingLineNumber = "314"
-            landmarkName = "-viewDidLayoutSubviews"
+            landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
-            timestampString = "424286078.171192"
+            timestampString = "424981260.072404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "-UIXExpandableMessageViewExpandedSize"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
+            timestampString = "424981260.072404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-layoutExpanded"
             landmarkType = "5">
          </BreakpointContent>
@@ -102,48 +214,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
-            timestampString = "424286519.199096"
+            timestampString = "424981260.072404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "-UIXExpandableMessageViewExpandedSize:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
-            timestampString = "424286519.199096"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "-UIXExpandableMessageViewExpanded:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../ExpandedMessage/ExpandedMessage/UIXExpandableMessageController/UIXExpandableMessageController.m"
-            timestampString = "424286550.90222"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-layoutExpanded"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-emailPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

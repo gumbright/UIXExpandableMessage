@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "UIXExpandableMessageController.h"
 
 @interface ViewController ()
 
@@ -34,12 +33,12 @@
     NSString* detail = [NSString stringWithContentsOfURL:url
                                                 encoding:NSUTF8StringEncoding error:&error];
     
-    UIXExpandableMessageController* message = [[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
+    UIXExpandableMessageController* message = [UIXExpandableMessageController messageWithTitle:@"My Title"
                                                                                        shortMessage:@"Something happened and you really want to know more about it. Really. Its something that is of critical importance. You should pay attention to it. So lets me this one really long so that it pushes the limits of the length so that it can be verified that there is the upper height limit imposed that matches the expanded size of the view. So, increasingly, referring to this as a short message is a misnomer of the highest degree...if you can accept the premise that there are varying degrees of misnomers."
                                                                                              detail:detail];
     
     message.emailSubject = @"Error detail from app";
-    
+    message.expandableMessageDelegate = self;
     [message show];
 }
 
@@ -48,26 +47,26 @@
     NSError* error = nil;
     
     [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/donkey/weasel/bananapants" error:&error];
-    UIXExpandableMessageController* message = [[UIXExpandableMessageController alloc] initWithError:error additionalDetail:[NSString stringWithFormat:@"error occurred near %s:%d",__FILE__,__LINE__]];
+    UIXExpandableMessageController* message = [UIXExpandableMessageController messageWithError:error additionalDetail:[NSString stringWithFormat:@"error occurred near %s:%d",__FILE__,__LINE__]];
     
     message.emailSubject = @"Error detail from app";
-    
+    message.expandableMessageDelegate = self;
     [message show];
 }
 
-- (IBAction) showPressed:(id)sender
+- (void) messageDidDismiss:(UIXExpandableMessageController *)expandableMessageController
 {
-    NSError* error;
-    NSURL* url = [[NSBundle mainBundle] URLForResource:@"AppDelegate" withExtension:@"txt"];
-    NSString* detail = [NSString stringWithContentsOfURL:url
-                                                encoding:NSUTF8StringEncoding error:&error];
-    
-    UIXExpandableMessageController* message = [[UIXExpandableMessageController alloc] initWithTitle:@"My Title"
-                                                                                       shortMessage:@"Something happened and you really want to know more about it"
-                                                                                             detail:detail];
+    NSLog(@"UIXExpandableMessageController was dismissed");
+}
 
-    message.emailSubject = @"Error detail from app";
-    [message show];
+- (void) messageDidSelectEmail:(UIXExpandableMessageController *)expandableMessageController
+{
+    NSLog(@"UIXExpandableMessageController started email");
+}
+
+- (void) messageDidExpand:(UIXExpandableMessageController *)expandableMessageController
+{
+    NSLog(@"UIXExpandableMessageController expanded");
 }
 
 @end

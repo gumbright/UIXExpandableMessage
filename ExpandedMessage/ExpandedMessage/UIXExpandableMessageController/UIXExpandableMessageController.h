@@ -11,12 +11,25 @@
 
 #define				USING_ARC			((__has_feature(objc_arc)))
 
+@class UIXExpandableMessageController;
+
+@protocol UIXExpandableMessageViewDelegate <NSObject>
+@optional
+- (void) messageDidDismiss:(UIXExpandableMessageController*) expandableMessageController;
+- (void) messageDidExpand:(UIXExpandableMessageController*) expandableMessageController;
+- (void) messageDidSelectEmail:(UIXExpandableMessageController*) expandableMessageController;
+
+@end
+
 @interface UIXExpandableMessageController : UIViewController <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, copy) NSString* emailSubject;  //subject line value for email sent from UIXExpandableMessage
+@property (nonatomic, copy) NSArray* emailRecipients; //array of email address to send the email to (the "To" receipents)
 
-- (id)initWithTitle:(NSString *)title shortMessage:(NSString *)message detail:(NSString*) detail;
-- (id)initWithError:(NSError *)error additionalDetail:(NSString*) additionalDetail;
+@property (nonatomic, assign) NSObject<UIXExpandableMessageViewDelegate>* expandableMessageDelegate;
+
++ (UIXExpandableMessageController*) messageWithTitle:(NSString *)title shortMessage:(NSString *)message detail:(NSString*) detail;
++ (UIXExpandableMessageController*) messageWithError:(NSError *)error additionalDetail:(NSString*) detail;
 
 //display the message
 - (void) show;
