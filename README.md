@@ -1,9 +1,11 @@
-UIXExpandableMessage
+UIXExpandableMessageController
 ====================
 
 A view controller for a message that can be expanded to show detail and allow mailing the detail
 
 ![UIXExpandableMessage GIF](UIXExpandableMessage.gif)
+
+UIXExpandableMessageController supports iOS 6.1+ SDK, ARC and non-ARC, and handles rotation.  It is intended for use in iPad applications.
 
 #Usage
 
@@ -46,4 +48,5 @@ UIXExpandableMessageContoller does not allow for much interactivity, but a deleg
 - (void) messageDidSelectEmail:(UIXExpandableMessageController*) expandableMessageController;
 ```
 
-
+##Known issues
+Scrolling in the detail view can be choppy, have not figured that one out yet.
